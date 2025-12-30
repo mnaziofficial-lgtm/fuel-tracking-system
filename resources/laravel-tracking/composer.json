@@ -1,0 +1,38 @@
+{
+    "name": "laravel/tracking",
+    "description": "A Laravel project for tracking sales and fuel management.",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "laravel/framework": "^9.0",
+        "laravel/tinker": "^2.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.5",
+        "fzaninotto/faker": "^1.9",
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "php artisan package:discover --ansi"
+        ],
+        "test": "phpunit"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

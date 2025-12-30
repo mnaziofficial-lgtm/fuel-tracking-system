@@ -1,0 +1,281 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | App Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the name of your application. It is used when the
+    | framework needs to place the application's name in a notification
+    | or any other location as required by the application.
+    |
+    */
+
+    'name' => env('APP_NAME', 'Laravel Tracking'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | App Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | App Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is in debug mode, detailed error messages with
+    | stack traces will be shown on every error that occurs within your
+    | application. If disabled, a simple generic error page is shown.
+    |
+    */
+
+    'debug' => (bool) env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | App URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to generate URLs when using the
+    | Artisan command line tool. You should set this to the root of
+    | your application so that it is used when running Artisan tasks.
+    |
+    */
+
+    'url' => env('APP_URL', 'http://localhost'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Timezone
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the default timezone for your application,
+    | which will be used by the PHP date and date-time functions.
+    |
+    */
+
+    'timezone' => 'UTC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Locale Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application locale determines the default locale that will be
+    | used by the translation service provider. You are free to set
+    | this value to any of the locales which will be supported by
+    | the application.
+    |
+    */
+
+    'locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Fallback Locale
+    |--------------------------------------------------------------------------
+    |
+    | The fallback locale determines the locale to use when the current
+    | locale is not available. You may change the value to correspond
+    | to any of the language folders that are provided through your
+    | application.
+    |
+    */
+
+    'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Encryption Key
+    |--------------------------------------------------------------------------
+    |
+    | This key is used by the Illuminate encrypter service and should be
+    | set to a random, 32 character string, otherwise these encrypted
+    | strings will not be safe. Make sure to set this value in your
+    | ".env" file before deploying your application!
+    |
+    */
+
+    'key' => env('APP_KEY'),
+
+    'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Laravel uses the Monolog PHP logging library by default. This gives
+    | you a variety of powerful log handlers and formatters. You can
+    | configure the log settings here.
+    |
+    */
+
+    'log' => env('APP_LOG', 'stack'),
+
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the cache settings for your application. You
+    | can configure the default cache store and the cache prefix.
+    |
+    */
+
+    'cache' => [
+        'default' => env('CACHE_DRIVER', 'file'),
+        'prefix' => 'laravel_tracking',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Session Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the session settings for your application. You
+    | can configure the default session driver and the session lifetime.
+    |
+    */
+
+    'session' => [
+        'driver' => env('SESSION_DRIVER', 'file'),
+        'lifetime' => 120,
+        'expire_on_close' => false,
+        'encrypt' => false,
+        'files' => storage_path('framework/sessions'),
+        'connection' => null,
+        'table' => 'sessions',
+        'store' => null,
+        'lottery' => [2, 100],
+        'cookie' => env('SESSION_COOKIE', 'laravel_tracking_session'),
+        'path' => '/',
+        'domain' => null,
+        'secure' => env('SESSION_SECURE_COOKIE', false),
+        'http_only' => true,
+        'same_site' => null,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the queue settings for your application. You
+    | can configure the default queue connection and the queue retry
+    | after settings.
+    |
+    */
+
+    'queue' => [
+        'default' => env('QUEUE_CONNECTION', 'sync'),
+        'retry_after' => 90,
+        'failed' => [
+            'database' => env('DB_CONNECTION', 'mysql'),
+            'table' => 'failed_jobs',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mail Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the mail settings for your application. You
+    | can configure the default mail driver and other mail settings.
+    |
+    */
+
+    'mail' => [
+        'driver' => env('MAIL_DRIVER', 'smtp'),
+        'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+        'port' => env('MAIL_PORT', 587),
+        'from' => [
+            'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+            'name' => env('MAIL_FROM_NAME', 'Example'),
+        ],
+        'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+        'username' => env('MAIL_USERNAME'),
+        'password' => env('MAIL_PASSWORD'),
+        'sendmail' => '/usr/sbin/sendmail -bs',
+        'pretend' => false,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Broadcasting Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the broadcasting settings for your application.
+    | You can configure the default broadcast driver and other settings.
+    |
+    */
+
+    'broadcasting' => [
+        'default' => env('BROADCAST_DRIVER', 'null'),
+        'connections' => [
+            'pusher' => [
+                'driver' => 'pusher',
+                'key' => env('PUSHER_APP_KEY'),
+                'secret' => env('PUSHER_APP_SECRET'),
+                'app_id' => env('PUSHER_APP_ID'),
+                'options' => [
+                    'cluster' => env('PUSHER_APP_CLUSTER'),
+                    'useTLS' => true,
+                ],
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Cache Stores
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the cache stores for your application. You can
+    | configure multiple cache stores and specify the default cache store.
+    |
+    */
+
+    'stores' => [
+        'file' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/data'),
+        ],
+        'database' => [
+            'driver' => 'database',
+            'table' => 'cache',
+            'connection' => null,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | View Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify the view settings for your application. You can
+    | configure the view paths and other settings.
+    |
+    */
+
+    'views' => [
+        'paths' => [
+            resource_path('views'),
+        ],
+        'compiled' => storage_path('framework/views'),
+    ],
+
+];

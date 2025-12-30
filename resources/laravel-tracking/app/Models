@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Sale extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'pump_id',
+        'fuel_id',
+        'litres_sold',
+        'amount',
+        'user_id',
+    ];
+
+    public function pump()
+    {
+        return $this->belongsTo(Pump::class);
+    }
+
+    public function fuel()
+    {
+        return $this->belongsTo(Fuel::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+}
+
+class Pump extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'code',
+        'price_per_litre',
+        'total_stock',
+    ];
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+}
+
+class Fuel extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'price_per_litre',
+        'total_stock',
+    ];
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+}
+
+class User extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+}
