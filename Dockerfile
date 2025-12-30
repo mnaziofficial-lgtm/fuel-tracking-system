@@ -1,12 +1,12 @@
 FROM php:8.2-apache
 
 # Install required extensions
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     zip \
     unzip \
-    mysql-client \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo pdo_mysql
 
 # Install Composer
