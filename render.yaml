@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: fuel-tracking-system
+    runtime: php
+    plan: free
+    buildCommand: composer install && php artisan migrate:fresh --seed
+    startCommand: php artisan serve --host 0.0.0.0 --port 8080
+    envVars:
+      - key: APP_NAME
+        value: Fuel Tracking System
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: CACHE_STORE
+        value: database
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+
+databases:
+  - name: tracking-db
+    databaseName: tracking
+    user: tracking_user
