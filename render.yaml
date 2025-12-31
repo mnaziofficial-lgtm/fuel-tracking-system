@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fuel-tracking-system
+    runtime: php
+    plan: free
+    buildCommand: composer install --no-interaction
+    startCommand: php artisan serve --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG  
+        value: "false"
